@@ -2,6 +2,8 @@ package com.ar.apitobiastorres.services.impl;
 
 import com.ar.apitobiastorres.dto.InfoDTO;
 import com.ar.apitobiastorres.dto.SucursalesDTO;
+import com.ar.apitobiastorres.dto.apidireccionesDTO.APIDireccionesDTO;
+import com.ar.apitobiastorres.dto.apidireccionesDTO.DireccionesDTO;
 import com.ar.apitobiastorres.services.NormalizadorService;
 import com.google.gson.Gson;
 
@@ -29,13 +31,20 @@ public class NormalizadorServiceImpl implements NormalizadorService {
         this.restTemplate = restTemplate;
     }
 
-    public String normalizarDireccion() {
+    @Override
+    public APIDireccionesDTO normalizarDireccion() {
+        Gson gson = new Gson();
 
         String respuesta = restTemplate.getForObject(apiUbicacion,String.class);
 
+        APIDireccionesDTO apiDireccionesDTO = gson.fromJson(respuesta, APIDireccionesDTO.class);
+
+        System.out.println(apiDireccionesDTO.getDireccionesDTO());
+
+        //List<DireccionesDTO> listaDeDirecciones = apiDireccionesDTO.getDireccionesDTO();
 
 
-        return respuesta;
+        return apiDireccionesDTO;
     }
 
 

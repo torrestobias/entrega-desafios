@@ -5,13 +5,16 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @Data
-public class DepartamentoDTO {
+public class DireccionParametrosDTO {
 
-    private String id;
-    private String nombre;
-
+    private AlturaDTO alturaDTO;
+    private List<String> calles;
+    private String piso;
+    private String tipo;
 }
